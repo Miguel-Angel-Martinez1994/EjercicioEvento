@@ -106,17 +106,32 @@ const mostrarImagen=(element)=>{
     galeria_fotos.forEach((elemento)=>{
         let tags = elemento.tag;
         let foto=elemento.src;
+        let nombre=elemento.titulo;
 
         if(tags.includes(element)){
-            imgUnicos.push(foto);
+            imgUnicos.push([nombre,foto]);
         }
     })
     pintarIMG(imgUnicos);
 }
 
 const pintarIMG =(fotos)=>{
-    console.log([fotos]);
+    //Preguntar como se limpia con innerHTML
 
+    fotos.forEach((foto)=>{
+        //creamos elementos imagenes
+        const imagen=document.createElement("IMG");
+        const caja =document.createElement("FIGURE");
+        const pie =document.createElement("FIGCAPTION");
+
+        imagen.src=foto[1];
+        imagen.title=foto[0];
+        pie.textContent=foto[0];
+
+        caja.append[imagen,pie];
+        fragment.append(caja);
+    })
+    contImagenes.append(fragment);
 }
 
 crearBotones(arrayTags());
