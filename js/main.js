@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded",()=>{
 //declaramos los elementos HTML con los que vamos a trabajar
 const contImagenes=document.querySelector(".flex-container");
 const cajaBotones=document.querySelectorAll("#seccion_btn");
+const cajaBotonesClass=document.querySelector(".seccion_btn");
 
 //Delegamos el evento ONCLICK a la caja de botones, puesto que los botones no estaran en principio creados
 cajaBotones.forEach((caja)=>{
     caja.addEventListener("click",(ev)=>{
         //pasamos todo el evento a la funcion para poder trabajar con ella
-        mostrarImagen(ev);
+        const btnValue=ev.target.value
+        mostrarImagen(btnValue);
     })
 })
 
@@ -64,18 +66,58 @@ const galeria_fotos=[
         tag:["cultural","turismo"]
     }
 ]
-//array donde guardaremos los tags
-const arrayTags=[];
+//array fragment para pintar
+const fragment=document.createDocumentFragment();
+
+
+const arrayTags =()=>{
+    const tagsUnicos=[];
+
+     galeria_fotos.forEach((elemento)=>{
+        let tags = elemento.tag;
+
+        tags.forEach((tag)=>{
+            if(!tagsUnicos.includes(tag)){
+                tagsUnicos.push(tag);
+            }
+        })
+    })
+    return tagsUnicos;
+}
 
 //funcion para crear los botones
-const crearBotones=()=>{
+const crearBotones=(tags)=>{
 
+    tags.forEach((tag)=>{
+         //creamos el elemento del boton 
+        const btn = document.createElement("BUTTON");
+        btn.value=tag;
+        btn.textContent=tag;
+
+        fragment.append(btn);
+    })
+    cajaBotonesClass.append(fragment);
 }
 
-//funcion para mostrar las imagenes
+//funcion para comprobar las imagenes
 const mostrarImagen=(element)=>{
+    const imgUnicos=[];
+
+    galeria_fotos.forEach((elemento)=>{
+        let tags = elemento.tag;
+        let foto=elemento.src;
+
+        if(tags.includes(element)){
+            imgUnicos.push(foto);
+        }
+    })
+    pintarIMG(imgUnicos);
+}
+
+const pintarIMG =(fotos)=>{
+    console.log([fotos]);
 
 }
 
-crearBotones();
+crearBotones(arrayTags());
 })//LOAD COMPLETO
