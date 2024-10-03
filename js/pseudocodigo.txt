@@ -1,0 +1,31 @@
+document.addEventListener("DOMContentLoaded",()=>{}) --- creamos esto lo primero para que se cargue todo antes y prevenir probleas
+
+Declaramos el div de seccion de botones y flex-container que pintaremos para trabajar en el
+	const cajaBotones=document.querySelector("#seccion_btn")
+	const contImagenes=document.querySelector("#felx-container")
+
+luego preparamos el listener para la seccion botones(delegando asi el listener) y pasamos el ev (evento), a la
+funcion mostrar fotos
+	cajaBotones.forEach((caja)=>{
+		caja.addEventListener("click",(ev)=>{
+			mostrarFotos(ev);
+		})
+	})
+
+Crear un array galeria_fotos
+	-id =>number
+	-src =>string, direccion a la carpeta donde se encuentra
+	-titulo => string
+	-alt => String
+	-tag => array
+
+Inicializar un array auxiliar, arrayTAGS, donde guardaremos todos los tags existentes en las fotos
+	const arrayTAGS = []
+
+1. funcion crearBotonos en el que se recorrera el array Galeria_fotos, en base a los tags, que es otro array,
+rellenaremos el arrayTAGS y crearemos 1 boton por cada elemento en el arrayTags
+	*investigar como comprobar si un elemento ya existe en el array
+
+2. funcion mostrarFotos, con un append pintamos las fotos que contengan el nombre del boton como tag en el
+array de galeria_fotos, recorremos galeria y mostramos solo las fotos con el mismo tag
+	
