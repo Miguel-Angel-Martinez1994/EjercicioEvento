@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+/*TITULO del HTML*/
 .cabecera {
     background-color: black;
     color: white;
@@ -14,17 +15,13 @@
     font-size: 24px;
 }
 
-.msj {
+/*Mensaje de FOTOS*/
+.mensaje {
     text-align: center;
     font-size: 22px;
 }
 
-.msj2 {
-    display: flex;
-    margin-top: 5rem;
-
-}
-
+/*BOTONES de la seccion del titulo*/
 button {
     background-color: grey;
     color: white;
@@ -33,27 +30,47 @@ button {
     float: left;
 }
 
-
+/*SECCION de las fotos encontradas*/
 #seccion_img_pr {
     display: grid;
-    margin-top: 5rem;
     font-size: 20px;
+    margin-top: 5rem;
 }
 
-.img_vip {
+/*mensaje de CANTIDAD DE IMAGENES ENCONTRADAS*/
+.mensaje2 {
+    display: flex; 
+}
+
+.flex-container {
     display: grid;
     width: 98%;
     align-items: center;
 }
 
-#galeria {
-    margin-top: 3%;
-    font-size: 18px;
+/*Tablet*/
+@media (min-width: 768px){
+    .flex-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 
-#seccion_galeria {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    
+/*Pantallas pequeñas ORdenador*/
+@media (min-width: 992px){
+    .flex-container {
+        display: grid;
+        grid-template-columns: repeat(2,2fr);
+        gap: 1rem;
+    }
+}
+
+/*Pantalla grande*/
+@media (min-width: 1200px){
+    .flex-container {
+        display: grid;
+        grid-template-columns: repeat(4,2fr);
+        gap: 1rem;
+    }
 }
